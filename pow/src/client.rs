@@ -26,6 +26,11 @@ async fn main() {
     println!("block status: {:?}", res);
 
     while let Some(block_hash) = stream.message().await.unwrap() {
-        println!("receive block_hash: {:?}", block_hash);
+        println!(
+            "receive block_hash: id={} hash={} nonce={}",
+            hex::encode(block_hash.id),
+            hex::encode(block_hash.hash),
+            block_hash.nonce
+        );
     }
 }

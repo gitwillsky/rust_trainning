@@ -1,10 +1,12 @@
+use rayon::prelude::{IntoParallelIterator, ParallelIterator};
+
 use crate::pb::{Block, BlockHash};
 
-const PREFIX_ZERO: &[u8] = &[0, 0];
+const PREFIX_ZERO: &[u8] = &[0, 0, 0];
 
 pub fn pow(block: Block) -> Option<BlockHash> {
     let hasher = blake3_hash_base(&block.data);
-    let nonce = (0..u32::MAX).find(|n| {
+    let nonce = (0..u32::MAX).into_par_iter().find_any(|n| {
         let hash = blake3_hash(hasher.clone(), *n);
         &hash[..PREFIX_ZERO.len()] == PREFIX_ZERO
     });
