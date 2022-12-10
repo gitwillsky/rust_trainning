@@ -1,3 +1,4 @@
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Request {
     #[prost(oneof = "request::Command", tags = "1, 2")]
@@ -5,6 +6,7 @@ pub struct Request {
 }
 /// Nested message and enum types in `Request`.
 pub mod request {
+    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Command {
         #[prost(message, tag = "1")]
@@ -13,6 +15,7 @@ pub mod request {
         Put(super::RequestPut),
     }
 }
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Response {
     #[prost(uint32, tag = "1")]
@@ -22,11 +25,13 @@ pub struct Response {
     #[prost(bytes = "vec", tag = "3")]
     pub value: ::prost::alloc::vec::Vec<u8>,
 }
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestGet {
     #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
 }
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestPut {
     #[prost(string, tag = "1")]
