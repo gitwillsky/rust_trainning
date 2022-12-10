@@ -1,0 +1,16 @@
+[workspace]
+
+members = [
+    "actix_example",
+    "fibonacci",
+    "closure",
+    "format_display",
+    "guess_game",
+    "hello",
+    "hello_world",
+    "minigrep",
+    "reference",
+    "training_code",
+    "v8_live",
+    "kv"
+]
